@@ -1,8 +1,9 @@
 import time
 from selenium import webdriver
+import chromedriver_binary
 videoFileName = "listview.txt"
 viewFile = "viewFile.txt"
-btnPlaySelector = "#buttonplay"
+btnPlaySelector = "button.ytp-large-play-button.ytp-button"
 
 
 videoFile = open(videoFileName)
@@ -16,14 +17,14 @@ tabIndex = 0
 tabCount = 1
 viewCount = 0
 # open browser
-browser = webdriver.Chrome(0)
+browser = webdriver.Chrome()
 # open url tabIndex = 0;
 browser.get(listVideo[videoIndex]);
 time.sleep(2)
 playButton = browser.find_element_by_css_selector(btnPlaySelector)
-playButton.click();
+playButton.click(); #first time
 
-white True:
+while True:
 	videoIndex = (videoIndex + 1) % NUMBER_OF_VIDEO # loop from 0 -> number_of_video - 1
 	tabIndex = (tabIndex + 1) % NUMBER_OF_TAB #loop from 0 -> 3
 
@@ -33,14 +34,10 @@ white True:
 		# open new tab
 		browser.execute_script("window.open('"+listVideo[videoIndex].strip()+"')")
 	else:
-		browser.switch_to.window_handles[tabIndex] #go back previous tab
-		browser.get[listVideo[videoIndex]] #tab opened -> open new url
+		browser.switch_to_window(browser.window_handles[tabIndex]) #go back previous tab
+		browser.get(listVideo[videoIndex]) #tab opened -> open new url
 	viewCount = viewCount + 1
 	saveFile = open(viewFile, "w")
 	saveFile.write(str(viewCount))
 	saveFile.close()
 	time.sleep(LOOPTIME)
-
-
-	# crwal link
-	# tao giao dien nhap input

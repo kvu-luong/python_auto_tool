@@ -19,13 +19,13 @@ import chromedriver_binary
 # Build interface with Django
 [reference](https://realpython.com/get-started-with-django-1/)
 ## Setup project
-1. Install env
+1. Install virtual enviroment working with python
 ```bash
 python -m venv venv
 ```
 2. Activate env on window
 ```bash
-source venv/bin/activate 
+source venv/Scripts/activate 
 ```
 3. Install Django
 ```bash
@@ -56,7 +56,7 @@ Path: nameOfProject/settings.py
 Tab: INSTALLED_APPS
 
 ### Create view
-Path: nameOfApp/views.py
+Path: nameOfApp/views.py 
 Then create function name: nameFunctionOne. That function will call file nameOfFileHtml.html 
 ```bash
 def nameFunctionOne(request):
@@ -68,7 +68,7 @@ mkdir nameOfApp/templates/
 touch nameOfApp/templates/nameOfFileHtml.html
 ```
 2. Register url to render html in project
-Path: nameOfProject/urls.py
+Path: nameOfProject/urls.py  
 Then add name library
 ```bash
 from django.urls import path, include
@@ -116,7 +116,7 @@ to call file header.html in other file
 
 ```
 2. Add static file like css, js, image
-Create folder name 'static' then create file in this forder of App.
+Create folder name 'static' then create file in this forder of App.  
 Path: nameOfApp/static
 ```bash
 mkdir nameOfApp/static
@@ -127,9 +127,28 @@ Then call it in template
 {% load static %}
 <link rel="stylesheet" type="text/css" href={% static 'fileCssStatic.css' %}
 ```
-Usually, we call it in file header, so we just need to call it one time.
-3. For CND link like bootstrap
+Usually, we call it in file header, so we just need to call it one time.  
+3. For CND link like bootstrap  
 We just copy link and paste it to header.html
 
+## Scrapy
+Crawl data for auto tool
+
+### Setup virtual enviroment
+1. Install venv
+2. Active enviroment venv
+```bash
+ source venv/Scripts/active
+```
+2. instal scrapy
+```bash
+pip install scrapy
+```
+
+### Create spider for crawl data
+[Reference](https://docs.scrapy.org/en/latest/intro/tutorial.html)
+```bash
+scrapy startproject nameOfProject
+```
 ## License
 [KVU](https://github.com/kvu-luong)

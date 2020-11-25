@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{%block page_content %}
+    <div class="container">
+    	<form id="inputRegex" action="">
+    		<div class="input-field">
+    			<label for="website">Website Link</label>
+    			<input name="website" id="website" placeholder="Website Link">
+    		</div>
+    		<div class="input-field">
+    			<label for="regex">Regex String</label>
+    			<input name="regex" id="regex" placeholder="Regex">
+    		</div>
+    		<button class="btn btn-primary">Crawl</button>
+    	</form>
+
+    	<div class="content">
+    		<div id="data-crawl">
+    		</div>
+    	</div>
+    </div>
+{% endblock %}

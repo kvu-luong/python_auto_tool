@@ -56,8 +56,9 @@ Path: nameOfProject/settings.py
 Tab: INSTALLED_APPS
 
 ### Create view
-Path: nameOfApp/views.py 
-Then create function name: nameFunctionOne. That function will call file nameOfFileHtml.html 
+Path: nameOfApp/views.py  
+Then create function name: nameFunctionOne.   
+That function will call file nameOfFileHtml.html 
 ```bash
 def nameFunctionOne(request):
 	return render(request, 'nameOfFileHtml.html', {})
@@ -94,7 +95,17 @@ to call another file html we just need to define another function which call to 
 path('otherPath', views.nameOtherFunction, name='nameOfApp')
 ```
 
-## Add bootstrap, css or script
+*** Remember: Declare templates url in nameOfProject/setting.py like ```nameOfProject/templates```
+
+### Setup Model connect to database
+Remember: manage.py have to place parallel with project folder
+makemigrations: create schema for database from model
+migrate: generate database
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+### Add bootstrap, css or script
 1. Create file load html and js like header file
 Path: nameOfProject/templates
 ```base
@@ -147,8 +158,17 @@ pip install scrapy
 
 ### Create spider for crawl data
 [Reference](https://docs.scrapy.org/en/latest/intro/tutorial.html)
+1. Create project
 ```bash
 scrapy startproject nameOfProject
 ```
+2. Run crawl
+```bash
+scrapy crawl nameOfSpider
+```
+
+## Ajax with Django
+[Reference](https://www.pluralsight.com/guides/work-with-ajax-django)
+
 ## License
 [KVU](https://github.com/kvu-luong)

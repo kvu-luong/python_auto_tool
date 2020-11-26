@@ -169,6 +169,46 @@ scrapy crawl nameOfSpider
 
 ## Ajax with Django
 [Reference](https://www.pluralsight.com/guides/work-with-ajax-django)
+WorkFlow
+1. Create model contains all field that we need in nameOfApp/models.py
+2. Create form at backend nameOfApp/forms.py
+3. Pass all data of Form and Model to view which we need in nameOfApp/views.py
+```bash
+from django.http import JsonResponse
+from django.core import serializers
+from .forms import nameOfForm
+from .models import nameOfModel
+```
+4. At front-end, we render all field of form and write ajax function in nameOfApp/templates/index.html
+5. Define url ajax function in nameOfProject/urls.py which we already created.
+Method 1:
+```bash
+path('post/ajax/specificName', nameOfFunction, name='urlNameCall'),
+```
+'post/ajax/specificName' can be any string we want. Just use for make distinct between other url.
 
+In interface we view call function like below
+```bash
+$.ajax({
+	type: 'POST',
+	url: "{% url 'urlNameCall' %}",
+	data: dataSerializedData,
+	success: functin (rs){
+
+	},
+	error: function(rs){
+
+	}
+})
+```
+Method 2:
+Define nameOfApp/views.py as View
+```bash 
+from django.views import View
+```
+Then, in nameOfProject/urls.py, change path to
+```bash
+ path('', nameOfClass.as_view(), name="urlNameCall"),
+ ````
 ## License
 [KVU](https://github.com/kvu-luong)

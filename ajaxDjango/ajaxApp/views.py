@@ -39,3 +39,29 @@ def checkNickName(request):
 
 	return JsonResponse({}, status = 400)
 
+
+
+from django.views import View
+
+class FriendView(View):
+    form_class = FriendForm
+    template_name = "index.html"
+
+    def get(self, *args, **kwargs):
+        form = self.form_class()
+        friends = Friend.objects.all()
+        return render(self.request, self.template_name, 
+            {"form": form, "friends": friends})
+
+    def post(self, *args, **kwargs):
+        if self.request.is_ajax and self.request.method == "POST":
+            form = self.form_class(self.request.POST)
+            if form.is_valid():
+                instance = form.save()
+                ser_instance = serializers.serialize('json', [ instance, ])
+                # send to client side.
+                return JsonResponse({"instance": ser_instance}, status=200)
+            else:
+                return JsonResponse({"error": form.errors}, status=400)
+
+        return JsonResponse({"error": ""}, status=400)

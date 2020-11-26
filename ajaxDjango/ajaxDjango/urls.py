@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from ajaxApp.views import(indexView, postFriend, checkNickName)
+# from ajaxApp.views import(indexView, postFriend, checkNickName)
+from ajaxApp.views import( FriendView , checkNickName)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', indexView),
-    path('post/ajax/friend', postFriend, name='post_friend'),
-    path('get/ajax/validate/nickname', checkNickName, name='validate_nickname')
+    # path('', indexView),
+    # path('post/ajax/friends', postFriend, name='post_friend'),
+    path('get/ajax/validate/nickname', checkNickName, name='validate_nickname'),
+    path('', FriendView.as_view(), name="friend_url")
 ]

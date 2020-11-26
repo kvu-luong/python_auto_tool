@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 
 # from ajaxApp.views import(indexView, postFriend, checkNickName)
-from ajaxApp.views import( FriendView , checkNickName)
+from ajaxApp.views import(FriendView,  checkNickName, CrawlView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', indexView),
     # path('post/ajax/friends', postFriend, name='post_friend'),
     path('get/ajax/validate/nickname', checkNickName, name='validate_nickname'),
-    path('', FriendView.as_view(), name="friend_url")
+    path('', FriendView.as_view(), name="friend_url"),
+    path('crawl', CrawlView.as_view(), name="crawl_url")
 ]

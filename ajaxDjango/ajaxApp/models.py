@@ -11,3 +11,10 @@ class Friend(models.Model):
 
 	def __str__(self):
 		return self.nick_name
+
+class Crawl(models.Model):
+	web_site = models.CharField(max_length=500, unique = True)
+	block = models.CharField(max_length = 250)
+
+	def __str__(self):
+		return self.web_site
